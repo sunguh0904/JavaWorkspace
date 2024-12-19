@@ -12,5 +12,11 @@ public class Application1 {
         A_nestedFor a1 = new A_nestedFor();
         a1.printGugudanFrowTwoTonNine();
         a1.printStarInputRowTimes();
+
+        B_while b = new B_while();
+        b.simpleWhileStatement();
+        b.whileExample1();
+        b.whileExample2();
+        b.whileExample3();
     }
 }

@@ -16,5 +16,9 @@ public class Application1 {
         // 다른 클래스를 호출 하기 때문에 객체 생성
         c.simpleIfElseIfStatement();
         c.nestedIfElseIfStatement();
+
+        D_switch d = new D_switch();
+        d.simpleSwitchStatement();
+        d.switchVendingMachine();
     }
 }

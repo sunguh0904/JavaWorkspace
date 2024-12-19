@@ -6,5 +6,10 @@ public class Application1 {
         a.simpleBreakStatement();
         a.simpleBreakStatement2();
         a.testJumpBreak();
+
+        B_continue b = new B_continue();
+        b.simpleContinueStatement();
+        b.simpleContinueStatement2();
+        b.testJumpContinue();
     }
 }

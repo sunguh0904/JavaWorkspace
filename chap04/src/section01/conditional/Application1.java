@@ -11,5 +11,10 @@ public class Application1 {
         // 다른 클래스를 호출 하기 때문에 객체 생성
         b.simpleIfElseStatement();
         b.nestedIfElseStatement();
+
+        C_ifElseIf c = new C_ifElseIf();
+        // 다른 클래스를 호출 하기 때문에 객체 생성
+        c.simpleIfElseIfStatement();
+        c.nestedIfElseIfStatement();
     }
 }

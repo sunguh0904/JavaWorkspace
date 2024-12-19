@@ -8,5 +8,9 @@ public class Application1 {
         a.testExample2();
         a.testForExample3();
         a.testForExample4();
+
+        A_nestedFor a1 = new A_nestedFor();
+        a1.printGugudanFrowTwoTonNine();
+        a1.printStarInputRowTimes();
     }
 }

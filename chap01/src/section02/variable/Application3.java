@@ -1,4 +1,4 @@
-package section01.section02.variable;
+package section02.variable;
 
 public class Application3 {
     public static void main(String[] args) {

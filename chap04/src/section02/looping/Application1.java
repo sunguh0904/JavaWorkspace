@@ -18,5 +18,9 @@ public class Application1 {
         b.whileExample1();
         b.whileExample2();
         b.whileExample3();
+
+        C_doWhile c = new C_doWhile();
+        c.simpleDoWhileStatement();
+        c.testDoWhileExample1();
     }
 }

@@ -28,4 +28,5 @@ public class Application1 {
         System.out.println("monster3 hp : " + monster3.hp);
 
         System.out.println("====================================");
+    }
 }

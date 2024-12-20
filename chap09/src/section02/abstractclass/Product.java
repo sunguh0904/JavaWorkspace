@@ -1,4 +1,4 @@
-package section02;
+package section02.abstractclass;
 
 public abstract class Product {
     private int nonStaticField;

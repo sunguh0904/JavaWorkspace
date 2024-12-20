@@ -1,4 +1,4 @@
-package section02;
+package section02.abstractclass;
 
 public class SmartPhone extends Product {
     /* extends 키워드로 클래스를 상속받을 때 두 개 이상의 클래스는 상속하지 못 한다.

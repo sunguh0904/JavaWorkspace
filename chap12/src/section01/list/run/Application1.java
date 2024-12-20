@@ -45,7 +45,7 @@ public class Application1 {
         List list = new ArrayList();
         Collection collection = new ArrayList();
         arrayList.add("apple");
-        arrayList.add(123);
+        arrayList.add(123);w
         arrayList.add(12.3);
         arrayList.add(new Date());
         System.out.println("arrayList : " + arrayList);

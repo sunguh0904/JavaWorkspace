@@ -38,5 +38,17 @@ public class Application1 {
 
         System.out.println(sft2.getNonStaticCount());   // 0
         System.out.println(sft2.getStaticCount());      // 1
+
+        System.out.println("=============================");
+
+        // non-static 메소드 호출
+        StaticMethodTest smt1 = new StaticMethodTest();
+
+        smt1.nonStaticMethod();
+
+        // static 메소드 호출
+        // static 은 만들 당시 객체를 만들지 않고 호출하려고 만든 것이다
+        // smt1.StaticMethod();
+        StaticMethodTest.staticMethod();
     }
 }

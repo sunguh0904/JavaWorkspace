@@ -1,6 +1,6 @@
 package section02.preparedstatement;
 
-import com.ohgiraffers.model.dto.EmployeeDTO;
+import model.EmployeeDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>React.js와 Springboot를 활용한 자바 풀스택 개발자</h1><br>
+    <h3>담당 강사: 권은지</h3>
+    <hr>
+    <ul>
+        <li>프로그래밍 언어
+            <ul>
+                <li><u>Java</u></li>
+            </ul>
+        </li>
+    </ul>
+    <ul>
+        <li>데이터 베이스
+            <ul>
+                <li><s>MySql</s></li>
+            </ul>
+        </li>
+    </ul>
+    <ul>
+        <li>화면 구현
+            <ol>
+                <li><mark>HTML5</mark></li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>JQuery</li>
+            </ol>
+        </li>
+    </ul>
+    <ul>
+        <li>서버 개발 기술
+            <ol type="i">
+                <li><s>JDBC</s></li>
+                <li>Servlet</li>
+                <li>JSP</li>
+                <li>AJAX</li>
+            </ol>
+        </li>
+    </ul>
+    <ul>
+        <li>소프트웨어 모델링
+            <ol type="1" reversed>
+                <li>DB Modeling</li>
+                <li>UML<span style="font-size: 12px;">&lt;unified modeling language&gt;</span></li>
+            </ol>
+        </li>
+    </ul>
+    <ul>
+        <li>프레임워크
+            <ol type="a">
+                <li style="font-weight: bold;">Spring</li>
+                <li>MyBatis</li>
+            </ol>
+        </li>
+    </ul>
+    <hr>
+
+    <table style="border: 1px solid black; text-align: center;">
+        <tr>
+            <td colspan="5" style="background-color: aqua; font-weight: bold; border: 1px solid black;">하수정 보석 컬렉션</td>
+        </tr>
+        <tr style="background-color: orange; font-weight: bold;">
+            <td rowspan="5" style="border: 1px solid black;">제품리스트</td>
+            <td style="border: 1px solid black;">코드</td>
+            <td style="border: 1px solid black;">분류</td>
+            <td style="border: 1px solid black;">가격</td>
+            <td style="border: 1px solid black;">구매가능 개수</td>
+        </tr>
+        <tr style="background-color: orange;">
+            <td style="border: 1px solid black;">01-468</td>
+            <td style="border: 1px solid black;">가을</td>
+            <td style="border: 1px solid black;">200,000원</td>
+            <td style="border: 1px solid black;">1068</td>
+        </tr>
+        <tr style="background-color: orange;">
+            <td style="border: 1px solid black;">01-469</td>
+            <td style="border: 1px solid black;">가을</td>
+            <td style="border: 1px solid black;">150,000원</td>
+            <td style="border: 1px solid black;">1700</td>
+        </tr>
+        <tr style="background-color: orange;">
+            <td style="border: 1px solid black;">01-470</td>
+            <td style="border: 1px solid black;">여름</td>
+            <td style="border: 1px solid black;">980,000원</td>
+            <td style="border: 1px solid black;">2500</td>
+        </tr>
+        <tr style="background-color: orange;">
+            <td style="border: 1px solid black;">01-471</td>
+            <td style="border: 1px solid black;">봄</td>
+            <td style="border: 1px solid black;">120,000원</td>
+            <td style="border: 1px solid black;">3200</td>
+        </tr>
+        <tr style="background-color: yellow;">
+            <td style="border: 1px solid black;" colspan="3" style="font-weight: bold;">총합</td>
+            <td style="border: 1px solid black;">1,420,000원</td>
+            <td style="border: 1px solid black;">8468</td>
+        </tr>
+    </table>
+
+    <hr>
+    <h1>회원가입</h1>
+    <form>
+        <fieldset>
+            <legend>필수 입력 사항</legend>
+            <table style="text-align: center;">
+                <tr>
+                    <td>
+                        <th>ID</th>
+                    </td>
+                    <td>
+                        <th>
+                            <input type="text" placeholder="아이디 10글자 이내">
+                            <button style="font-weight: bold;">중복 확인</button>
+                        </th>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <th>비밀번호</th>
+                    </td>
+                    <td>
+                        <th><input size="30" type="password" placeholder="영문,숫자,특수문자 포함8자 이상"></th>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <th>비밀번호 확인</th>
+                    </td>
+                    <td>
+                        <th><input size="30" type="password"></th>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <th>이메일</th>
+                    </td>
+                    <td>
+                        <th>
+                            <input type="email" name="" id="">
+                            <select name="email" size="1">
+                                <option value="직접입력">직접입력</option>
+                                <option value="네이버">@naver.com</option>
+                                <option value="구글">@gmail.com</option>
+                                <option value="다음">@daum.net</option>
+                            </select>
+                        </th>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <table>
+                <legend>추가 정보</legend>
+                <tr>
+                    <td>
+                        <br>
+                        <label>프로필 사진&nbsp;</label><input type="file">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br>
+                        <label>성별 : </label>
+                        <input id="male" type="radio" name="gender" value="M" checked>
+                        <label for="male">남자</label>
+                        <input id="female" type="radio" name="gender" value="F">
+                        <label for="female">여자</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br>
+                        <label>생년월일 : </label>
+                        <input type="date" name="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br>
+                        <label>취미</label>
+                        <br>
+                        <input type="checkbox" name="baseball" id="baseball">
+                        <label for="baseball">야구</label>
+                        <input type="checkbox" name="basketball" id="basketball">
+                        <label for="basketball">농구</label>
+                        <input type="checkbox" name="soccer" id="soccer">
+                        <label for="soccer">축구</label><br>
+                        <input type="checkbox" name="study" id="study" checked>
+                        <label for="study">공부</label>
+                        <input type="checkbox" name="music" id="music">
+                        <label for="music">음악감상</label>
+                        <br>
+                        <input type="checkbox" name="orther" id="orther">
+                        <label for="orther">기타 : </label><input type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br>
+                        <label>자기소개</label>
+                        <br>
+                        <textarea name="" id="" cols="50" rows="3" style="resize: none;"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </fieldset><br>
+        <td>
+            <button style="margin-left: 20px;">회원가입</button>
+            &nbsp;<button>다시입력</button>
+            &nbsp;<button>이전으로</button>
+        </td>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="config/connection-info.properties"/>
+<!--    커넥션 정보를 읽어옴-->
+
+    <typeAliases>
+        <typeAlias type="com.uhyeon.section01.xml.SearchCriteria" alias="SearchCriteria"/>
+    </typeAliases>
+
+<!--    환경정보 설정-->
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+<!--                connection-info.properties의 키, 값과 매칭-->
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--        xml 패키지 하위에 인터페이스를 Mapper 인터페이스로 설정하겠다.-->
+        <package name="com.uhyeon.section01.xml"/>
+    </mappers>
+</configuration>

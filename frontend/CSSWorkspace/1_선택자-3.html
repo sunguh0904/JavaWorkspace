@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 형제 탐색 선택자들 */
+        /* 일반 구조 선택자 */
+        
+        #test1 :first-child {
+            background-color: rebeccapurple;
+            color: white;;
+        }
+
+        #test1 :last-child {
+            background-color: orange;
+            color: white;
+        }
+
+        #test1 :nth-child(2n) {
+            background-color: skyblue;
+            color: white;
+        }
+
+        #test1 :nth-last-child(4) {
+            background-color: yellowgreen;
+            color: white;
+        }
+
+        /* 형태 구조 선택자 */
+        
+        #test2 :first-of-type {
+            background-color: red;
+        }
+
+        #test2 :last-of-type {
+            background-color: aqua;
+        }
+
+        #test2 :nth-last-of-type(3) {
+            background-color: gray;
+        }
+
+        #test2 :nth-of-type(2n) {
+            background-color: darkcyan;
+        }
+
+        /* 부정 선택자 */
+        #test3 p:not(:nth-child(2n)) {
+            background-color: orange;
+        }
+
+        /* 문자 선택자 */
+        #test4 p::first-letter {
+            font-size: 2em;
+        }
+
+        #test4 p::first-line {
+            background-color: coral;
+        }
+
+        #test4 p::after {
+            content: "@@@ 태그 뒤에 추가 @@@";
+        }
+
+        #test4 p::selection {
+            background-color: red;
+            /* 글을 드래그 했을 때 색상 */
+        }
+    </style>
+</head>
+
+<body>
+    <h2>일반 구조 선택자</h2>
+    <p>특정한 위치에 있는 태그 선택(위치로 구분)</p>
+    <!-- div#test1>(p{테스트$}*5+pre{테스트$@6}*1) -->
+    <div id="test1">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+    <h2>형태 구조 선택자(태그 별로 구분)</h2>
+    <p>특정한 위치에 있는 태그 선택(태그 별로 구분)</p>
+    <div id="test2">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+    <h2>부정 선택자</h2>
+    <p>지금까지의 선택자에 대해 반대로 적용하는 선택자</p>
+    <div id="test3">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+    <h2>문자 선택자</h2>
+    <p>태그 내부에서 특정 조건의 문자를 선택하는 선택자</p>
+    <div id="test4">
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+            literature from 45 BC, m
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+div[name = name2] {
+    background-color: red;
+}
+
+/* 속성 안의 값이 특정 값을 단어(띄어쓰기 단위)로써 포함하는 객체 선택 */
+div[name~=name1] {
+    background-color: yellow;
+}
+
+/* 속성 안의 값이 특정 값과 일치하거나 하이폰 문자가 곧바로 해당 값 뒤에 따라붙ㄴ느 객체 */
+div[class|= class] {
+    background-color: aqua;
+}
+
+/* 속성 값을 가지고 있으며, 접두사로 특정 값이 포함되어 있는 객체 */
+div[name^=name] {
+    background-color: blue;
+}
+
+/* 속성 안의 값이 특정 값으로 끝나는(접미사) 객체 선택 */
+div[clss $=clss] {
+    background-color: white;
+}
+
+/* 속성 안의 값이 특정 값을 포함하는 객체 선택 */
+div[clss*=div] {
+    background-color: brown;
+    color: white;
+}
+
+/* 자손 선택자 */
+template1>h4 {
+    background-color:hotpink;
+}
+
+te>ul>il {
+    background-color: purple;
+}
+
+/* 후손 선택자 */
+
+
+/* 동일한 선택자를 다시 사뇽해도 문제 없음 */
+#test1 ul {
+    background-color: rebeccapurple;
+}
+
+/* 동위 선택자 */
+
+#div-test {
+    background-color: rebeccapurple;
+}
+
+/* 해당 요소 바로 다음에 특정 타입의 요소 */
+#div-test1 + div {
+    background-color: yellow;
+}
+
+/* 해당 요소 뒤에 존재하는 특정 타입의 요소 모두 선택 */
+
+/* #div-test ~ div {
+    #div test1 + div {
+        background-color: purple;
+    }
+} */
+
+#active-test, #hober-test {
+    width: 150px;
+    height: 150px;
+    background-color: orang
+    e;
+}
+
+/*  반응 선택자 */
+#active-test:active {
+    background-color: yellow;
+    color: white;
+}
+
+#hover-test:hover {
+    background-color: cyan;
+    color: purple;
+    cursor: pointer;
+    font: 40px bold;
+}
+
+/* 상태 선택자 */
+input[type=checkbox]:checked {
+    width: 50px;
+    height: 50px;
+}
+
+#userId:focus, #userPwd:focus {
+    background-color: green;
+}
+
+option:disabled {
+    background-color: red;
+    color: white;
+}
+
+option:enabled {
+    background-color: yellowgreen;
+}
+
+input:disabled {
+    background-color: blu;
+}

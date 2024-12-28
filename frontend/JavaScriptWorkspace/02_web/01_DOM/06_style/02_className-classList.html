@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_className classList</title>
+    <style>
+        .area { 
+            width : 100px; 
+            height : 100px; 
+            border : 1px solid black;
+        }
+
+        .circle { border-radius: 50%; }
+
+        .lightgray { background : lightgray; }
+        .yellow { background : yellow; }
+    </style>
+</head>
+<body>
+    <h1>02. className과 classList</h1>
+
+    <pre>
+    class 어트리뷰트에 대응하는 DOM 프로퍼티는 class가 아니라 className, classList이다. 
+    Element.prototype.className 프로퍼티는 setter와 getter 모두 존재하는 접근자 프로퍼티로 
+    요소 노드의 className 프로퍼티를 참조하면 class 어트리뷰트의 값을 문자열로 반환하고, 
+    요소 노드의 className 프로퍼티에 문자열을 할당하면 class 어트리뷰트 값을 할당한 문자열로 변경한다.
+    Element.prototype.classList 프로퍼티는 class 어트리뷰트의 정보를 담은 DOMTokenList 객체를 반환한다. 
+    </pre>
+    
+    <div class='area'></div>
+
+    <script>
+        const $area = document.querySelector('.area');
+
+        console.log($area.className);
+        // 문자열 반환
+
+        console.log($area.classList);
+        // DOMTokenList 객체 반환
+
+        // class attribute 값 추가 및 제거
+        $area.classList.add('circle');
+        $area.classList.add('lightgray');
+
+        // $area.classList.remove('lightgray');
+       
+        // item(index): 인덱스에 해당하는 클래스를 class attribute에서 반환
+        console.log($area.classList.item(0));
+        console.log($area.classList.item(2));
+
+        // contains에서 입력받은 인자가 classList에 있으면 trye, 없으면 false
+        console.log($area.classList.contains('lightgray'));
+        console.log($area.classList.contains('yellow'));
+
+        // replace에서 첫 번째 인수로 전달한 문자열을 두 번째 인수로 변경
+        $area.classList.replace('lightgray', 'yellow');
+
+        // toggle(className): 인수로 전달한 문자열과 일치하는 클래스가 존재하면 제거, 없으면 추가
+        $area.classList.toggle('circle');
+    </script>
+   
+</body>
+</html>

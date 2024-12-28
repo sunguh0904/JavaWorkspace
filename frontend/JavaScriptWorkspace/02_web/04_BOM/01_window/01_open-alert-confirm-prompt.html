@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_open-alert-cofirm-prompt</title>
+</head>
+<body>
+    <h1>01. open, alert, confirm, propmt 메소드</h1>
+    
+    <h3>브라우저 환경</h3>
+
+    <pre>
+    자바스크립트가 돌아가는 플랫폼은 호스트(host) 라고 불린다. 
+    호스트 환경이 웹 브라우저일 때 사용하는 할 수 있는 기능은 개괄적으로 아래와 같다. 
+    
+    window 
+        ㄴ DOM (document, ...)
+        ㄴ BOM (location, navigator, screen, history, ...)
+        ㄴ JavaScript (Object, Array, Function, ...)
+    
+    최상단의 window 객체는 자바스크립트 코드의 전역 객체이자 
+    브라우저 창(browser window)을 대변하고 이를 제어할 수 있는 메서드를 제공한다. 
+    window 객체는 전역 객체이므로 메서드 호출 시 생략할 수 있다. 
+    </pre>
+    
+    <h3>open</h3>
+    <pre>
+    window.open(url, name, params) 메서드로 새 창을 열 수 있다. 
+    url : 새 창에 로드할 URL이다. 
+    name : 새 창의 이름으로 해당 이름을 가진 창이 이미 있으면 그 안에서 열리고, 그렇지 않으면 새 창이 열린다. 
+    params : 새 창의 설정을 쉼표로 구분하여 문자열로 전달한다.
+    </pre>
+
+    <button id="btn1">새로운 창 열기</button>
+    <button id="btn2">새로운 창 열기</button>
+
+    <script>
+        // 새로운 창을 여는 메소드
+        document.getElementById('btn1').onclick = () => window.open
+        ('https://www.google.com', 'popup1', 'width=1080', 'height=800');
+
+        document.getElementById('btn2').onclick = () => window.open
+        ('https://www.naver.com', 'popup1');
+    </script>
+   
+    <h3>alert</h3>
+    <pre>
+    window.alert(message) 메서드는 확인 버튼을 가지며 메시지를 지정할 수 있는 경고 대화 상자를 띄운다.   
+    </pre> 
+
+    <script>
+        window.alert('alert창 입니다.');
+    </script>
+
+    <h3>confirm</h3>
+    <pre>
+    window.confirm(message) 메서드는 확인과 취소 두 버튼을 가지며 메시지를 지정할 수 있는 모달 대화 상자를 띄운다. 
+    반환 값은 확인을 누를 시 true, 취소를 누르거나 ESC 키를 누르면 false이다.
+    </pre>
+    
+    <script>
+        const answer = window.confirm('계속 하시겠습니까');
+        if(answer) {
+            console.log('잘 선택 하셨습니다.');
+        } else {
+            console.log('아쉽네요...')
+        }
+    </script>
+
+    <h3>prompt</h3>
+    <pre>
+    window.prompt(message, default) 메서드는 사용자가 텍스트를 입력할 수 있도록 안내하는 선택적 메세지를 갖고 있는 대화 상자를 띄운다. 
+    default : 텍스트 입력 필드에 기본으로 채워 넣을 문자열이다. 
+    반환 값은 확인을 누를 시 사용자가 입력한 문자열이며 취소를 누르거나 ESC 키를 누르면 null이다. 
+    </pre>
+
+    <script>
+        // prompt('좋아하는 숫자를 입력하세요', 3), 3은 디폴트 값으로 보여주게 된다.
+        const likeNumber = window.prompt('좋아하는 숫자를 입력하세요', 3);
+        if(likeNumber) {
+            console.log(`당신이 좋아하는 숫자는 ${likeNumber} 입니다.`);
+        } else {
+            console.log('입력을 안 하셨습니다.');
+        }
+    </script>
+
+</body>
+</html>

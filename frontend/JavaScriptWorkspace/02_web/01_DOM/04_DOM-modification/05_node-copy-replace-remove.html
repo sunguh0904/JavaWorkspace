@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_node copy replace remove</title>
+</head>
+<body>
+    <h1>05. 노드 복사, 교체, 삭제</h1>
+
+    <h3>노드 복사</h3>
+    <pre>
+    Node.prototype.cloneNode([deep : true | false]) 메서드는 노드의 사본을 생성하여 반환한다. 
+    매개변수 deep에 true를 인수로 전달하면 노드를 깊은 복사하여 모든 자손 노드가 포함된 사본을 생성하고,
+    false를 인수로 전달하거나 생략하면 노드를 얕은 복사하여 노드 자신만의 사본을 생성한다. 
+    얕은 복사로 생성된 요소 노드는 자손 노드를 복사하지 않으므로 텍스트 노드도 없다.  
+    </pre>
+
+    <ul class="copy">
+        ul 영역
+        <li>li 영역</li>
+    </ul>
+
+    <script>
+        const $ul = document.querySelector('.copy');
+        // querySelector: class를 취득
+
+        const $li = $ul.firstElementChild;
+        // 요소인 li 영역 반환
+
+        const $shallowClone = $li.cloneNode(false);
+        // $li 얕은 복사: 텍스트 노드 없는 사본
+
+        const $deepClone = $li.cloneNode(true);
+        // $li 깊은 복사: 텍스트 노드 있는 사본
+
+        $ul.appendChild($shallowClone);
+        // 요소만 복사 <li> 태그만 복사 됨, li 영역 텍스트 요소는 복사 안 됨
+
+        $ul.appendChild($deepClone);
+        // 모든 요소를 복사
+    </script>
+   
+    <h3>노드 교체</h3>
+    <pre>
+    Node.prototype.replaceChild(newChild, oldChild) 메서드는 자신을 호출한 노드의 자식 노드인 
+    oldChild 노드를 newChild 노드로 교체한다. 이때 oldChild는 replaceChild 메서드를 호출한 노드의
+    자식 노드여야하고 oldChild 노드는 DOM에서 제거된다.
+    </pre>
+    
+    <ul id="drink">
+        <li>커피</li>
+        <li>사이다</li>
+    </ul>
+
+    <script>
+        const $drink = document.getElementById("drink");
+        const $coffee = $drink.firstElementChild;
+        const $newChild = document.createElement('li');
+
+        $newChild.textContent = '콜라';
+        $drink.replaceChild($newChild, $coffee);
+    </script>
+    
+
+    <h3>노드 삭제</h3>
+    <pre>
+    Node.prototype.removeChild(child) 메서드는 child 매개변수에 인수로 전달한 노드를 DOM에서 삭제한다.
+    인수로 전달한 노드는 removeChild 메서드를 호출한 노드의 자식이어야 한다. 
+    </pre>
+
+    <ul id="food">
+        <li>파스타</li>
+        <li>피자</li>
+    </ul>
+
+    <script>
+        const $food = document.getElementById("food");
+
+        $food.removeChild($food.lastElementChild);
+    </script>
+  
+</body>
+</html>

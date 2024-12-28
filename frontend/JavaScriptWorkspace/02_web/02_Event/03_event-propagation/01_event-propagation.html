@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_event bubbling</title>
+    <style>
+        ul {
+            background: lightgray;
+        }
+
+        li {
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>01. 이벤트 전파</h1>
+    <pre>
+    생성된 이벤트 객체는 이벤트를 발생시킨 DOM 요소인 이벤트 타깃(event target)을 중심으로 DOM 트리를 통해 전파된다. 
+    1. 캡처링 단계(capturing phase) : 이벤트가 상위 요소에서 하위 요소 방향으로 전파 
+    2. 타깃 단계(target phase) : 이벤트가 이벤트 타깃에 도달
+    3. 버블링 단계(bubbling phase) : 이벤트가 하위 요소에서 상위 요소 방향으로 전파
+    </pre>
+
+    <ul id="drink">
+        <li>커피</li>
+        <li>콜라</li>
+        <li>우유</li>
+    </ul>
+
+    <script>
+        const $drink = document.getElementById('drink');
+
+        $drink.addEventListener('click', e => {
+
+            // ul 영역 클릭 시
+            // 2: 타깃 단계, e.타깃도 현재 타깃도 ul로 출력
+
+            // li 영역 클릭 시
+            // 3: 버블링 단계(li -> ul), 타깃은 li, 현재 타깃은 ul 출력
+            console.log(e.eventPhase);
+            console.log(e.currentTarget);
+            console.log(e.target);
+        });
+    </script>
+   
+
+    <pre>
+    이벤트 핸들러 어트리뷰트/프로퍼티 방식으로 등록한 이벤트 핸들러는 타깃 단계와 버블링 단계의 이벤트만 캐치할 수 있지만 
+    addEventListener 메서드 방식으로 등록한 이벤트 핸들러는 3번째 인수로 true를 전달하면 캡처링 단계의 이벤트도 캐치할 수 있다. 
+    </pre>
+
+    <ul id="food">
+        <li>김치찌개</li>
+        <li>된장찌개</li>
+        <li>고등어구이</li>
+    </ul>
+
+    <script>
+        const $food = document.getElementById('food');
+
+        // 캡쳐링 단계 캐치
+        $food.addEventListener('click', e => {
+            console.log(e.eventPhase);
+            console.loge(e.target);
+            console.log(e.currentTarget);
+        }, true);
+
+        // 버블링 단계 캐치
+        $food.addEventListener('click', e => {
+            console.log(e.eventPhase);
+            console.log(e.target);
+            console.log(e.currentTarget);
+        });
+    </script>
+
+</body>
+</html>

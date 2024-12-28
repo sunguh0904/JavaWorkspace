@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_attribute and property</title>
+</head>
+<body>
+    <h1>02. HTML 어트리뷰트와 DOM 프로퍼티</h1>
+    
+    <pre>
+    HTML 어트리뷰트 : HTML 요소의 초기 상태를 지정하며 변하지 않는다.
+                     어트리뷰트 노드에서 관리되며 값을 얻거나 변경하려면 getAttribute/setAttribute 메서드를 사용한다. 
+
+    DOM 프로퍼티 : 사용자가 입력한 최신 상태를 관리한다. 
+                  사용자의 입력에 의한 상태 변화에 반응하여 언제나 최신 상태를 유지한다.
+    </pre>
+    
+    <label for="username">유저명</label>
+    <input type="text" id="username" value="user01">
+    <label for="nickname">닉네임</label>
+    <input type="text" id="nickname" value="JSBeginner">
+
+    <script>
+        const $user = document.getElementById('username');
+
+        // 사용자가 input 요소의 입력 필드에 값을 입력할 때마다 동작하는 이벤트
+        $user.oninput = () => {
+            console.log('value 프로퍼티 값', $user.value)
+            // 실시간으로 최신상태
+
+            console.log('value 어트리뷰트 값', $user.getAttribute('value'));
+            // 초기 설정을 했던 값 고정; user01
+        }
+            // DOM 프로퍼티에 값을 할당하여 HTML 요소의 최신 상태를 변경
+            const $nickname = document.getElementById('nickname');
+            $nickname.value = 'JsMaster';
+
+            console.log('value 프로퍼티 값', $nickname.value);
+            console.log('value 어트리뷰트 값', $nickname.getAttribute('value'));
+
+            // id는 사용자 입력에 의한 상태 변화와 관계 없는 어트리뷰트 이므로
+            // id 어트리뷰트와 id 프로퍼티는 항상 동일한 값으로 연동 된다.
+            $nickname.id = 'nick';
+            console.log($nickname.id);
+            console.log($nickname.getAttribute('id'));
+    </script>
+  
+
+    <pre>
+    getAttribute 메서드로 취득한 어트리뷰트 값은 언제나 문자열이다.
+    하지만 DOM 프로퍼티로 취득한 최신 상태 값은 문자열이 아닐 수 있다.
+    checkbox 요소의 checked 어트리뷰트 값은 문자열이지만 checked 프로퍼티 값은 불리언 타입이다.
+    </pre>
+    
+    <label for="check">확인</label>
+    <input type="checkbox" id="check" checked>
+
+    <script>
+        const $checkbox = document.querySelector('input[type=checkbox]');
+
+        console.log($checkbox.getAttribute('checked'));
+        console.log($checkbox.checked);
+    </script>
+   
+</body>
+</html>

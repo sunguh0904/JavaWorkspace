@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_use css</title>
+    <style>
+        .area {
+            width : 100px;
+            height: 100px;
+            border : 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>04. CSS 선택자를 이용한 요소 노드 취득</h1>
+    <pre>
+    <b>Document.prototype/Element.prototype.querySelector 메서드는 인수로 전달한 CSS 선택자를 만족시키는 하나의 요소 노드를 탐색하여 반환한다.</b>
+    </pre>
+    <div class="area">
+        <p>first</p>
+    </div>
+    <div class="area">
+        <p>second</p>
+    </div>
+   <script>
+    // Document.prototype.querySelector
+    // DOM 전체에서 해당 CSS 선택자의 값을 노드 중 첫 번째 요소 노드만 탐색하여 반환
+    const $area = document.querySelector('.area');
+    console.log($area);
+
+    $area.style.backgroundColor = 'yellow';
+
+    // Element.prototype.querySelector
+    // 해당 엘리먼트의 자식 노드 중 인수로 넘겨준 css 선택자 값의 첫 번째 요소 노드만 반환
+    const $first = $area.querySelector('p');
+    console.log($first);
+    $first.style.color = 'darkred';
+
+    // 만족시키는 요소 노드가 존재하지 않는 경우 nill 반환
+    const $noElem = document.querySelector('#noElem');
+    console.log($noElem);
+   </script>
+
+    <pre>
+    <b>Document.prototype/Element.prototype.querySelectorAll 메서드는 인수로 전달한 CSS 선택자를 만족시키는 모든 요소 노드를 탐색하여 반환한다.</b>
+    여러 개의 요소 노드 객체를 갖는 DOM 컬렉션 객체인 NodeList 객체를 반환한다.
+    </pre>
+
+    <ul id="list">
+        <li class="drink">커피</li>
+        <li class="drink">콜라</li>
+        <li class="food">김치찌개</li>
+        <li class="food">된장찌개</li>
+    </ul>
+
+    <script>
+        // DOM 전체에서 해당 css 선택자의 값을 모두 NodeList로 반환
+        const $foodList = document.querySelectorAll('ul > li');
+        console.log($foodList);
+
+        $foodList.forEach(food => food.style.color = 'red');
+        const $noElemList = document.querySelectorAll('#$noElemList');
+        console.log($noElemList);
+    </script>
+    
+</body>
+</html>

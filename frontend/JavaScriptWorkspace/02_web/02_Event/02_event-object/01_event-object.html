@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_event object</title>
+    <style>
+        .area {
+            width : 200px;
+            height : 200px;
+            background: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>01. 이벤트 객체</h1>
+    <pre>
+    이벤트 발생 시 이벤트에 관련한 다양한 정보를 가진 이벤트 객체가 동적으로 생성된다. 
+    생성된 이벤트 객체는 이벤트 핸들러의 첫 번째 인수로 전달된다. 
+    </pre>
+    <h1 class="message">아무 곳이나 클릭해보세요. 클릭한 좌표를 알려드릴게요.</h1>
+    <script>
+        const $msg = document.querySelector('.message');
+
+        function showCoords(e) {
+            console.log(e);
+            $msg.textContent = `clientX: ${e.clientX}, clinetY: ${e.clientY}`;
+        }
+
+        document.onclick = showCoords;
+    </script>
+
+    <pre>
+    이벤트 핸들러 어트리뷰트 방식으로 이벤트 핸들러를 등록했다면 반드시 event라는 이름을 사용해야 한다.  
+    </pre>
+
+    <div class="area" onclick="showDivCoords(event)">
+        <!-- 어트리뷰트의 표현법으로 작성 시  -->
+        이 영역 내부를 클릭해보세요. 클릭한 좌표를 알려드릴게요.
+    </div>
+
+    <script>
+        const $area = document.querySelector('.area');
+
+        function showDivCoords(e) {
+            console.log(e);
+            $area.textContent = `clientX: ${e.clientX}, clinetY: ${e.clientY}`;
+        }
+
+        // onclick="showDivCoords(event)" 어트리뷰는 아래와 같은 함수를 암묵적으로 생성하여
+        // onclick 이벤트 핸들러 프로퍼티에 할당하는데
+        // 이때 onclick 이벤트 핸들러의 첫 번째 매개변수 이름이 event로 암묵적으로 명명되기 때문에
+        // // event가 아닌 다른 이름으로는 이벤트 객체를 전달받지 못 한다.
+        // function onclick(event) {
+        //     showDivCoords(event);
+        // }
+    </script>
+
+    
+
+</body>
+</html>

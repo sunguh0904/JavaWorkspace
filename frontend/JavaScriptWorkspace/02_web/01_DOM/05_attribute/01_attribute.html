@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_attribute</title>
+</head>
+<body>
+    <h1>01. 어트리뷰트</h1>
+    
+    <pre>
+    Element.prototype.attributes 프로퍼티로 모든 어트리뷰트 노드를 취득할 수 있다. 
+    attributes 프로퍼티는 getter만 존재하는 읽기 전용 접근자 프로퍼티로 NameNodeMap 객체를 반환한다.   
+    </pre>
+
+    <label for="username">유저명</label>
+    <input type="text" id="username" value="user01">
+
+    <script>
+        const { attributes } = document.getElementById("username");
+        // const attributes = document.getElementById("username").attributes;
+
+        console.log(attributes);
+        console.log(attributes.type.value);
+        console.log(attributes.id.value);
+        console.log(attributes.value.value);
+        console.log('===========================')
+    </script>
+  
+
+    <pre>
+    Element.prototype.getAttribute/setAttribute 메서드를 사용하면 attributes 프로퍼티를 통하지 않고 
+    요소 노드에서 메서드를 통해 직접 HTML 어트리뷰트 값을 취득하거나 변경할 수 있어 편리하다. 
+    </pre>
+
+    <script>
+        const $input = document.getElementById('username');
+        const $inputValue = $input.getAttribute('value');
+        console.log($inputValue);
+
+        $input.setAttribute('value', 'user99');
+        // user01 이였던 value 값을 user99로 바꾼다.
+    </script>
+   
+
+    <pre>
+    Element.prototype.hasAttribute(attributeName) 메서드를 사용하면 특정 HTML 어트리뷰트가 존재하는지 확인할 수 있다.
+    Element.prototype.removeAttribute(attributeName) 메서드를 사용하면 특정 HTML 어트리뷰트를 삭제할 수 있다. 
+    </pre>
+
+    <label for="nickname">닉네임</label>
+    <input type="text" id="nickname" value="JSMaster">
+
+    <script>
+        const $nickname = document.getElementById("nickname");
+        console.log($nickname.hasAttribute('name'));
+
+        console.log($nickname.hasAttribute('value'));
+
+        if($nickname.hasAttribute('value')) {
+            // value 어트리뷰트를 가지고 있는지 확인
+
+            $nickname.removeAttribute('value');
+            // value 어트리뷰트가 있으면 삭제
+        }
+
+        console.log($nickname.hasAttribute('value'));
+    </script>
+   
+</body>
+</html>

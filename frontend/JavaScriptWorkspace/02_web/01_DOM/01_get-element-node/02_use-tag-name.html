@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_use tag name</title>
+</head>
+
+<body>
+    <h1>02. 태그 이름을 이용한 요소 노드 취득</h1>
+    <pre>
+    <b>Document.prototype/Element.prototype.getElementsByTagName 메서드는 인수로 전달한 태그 이름을 갖는 모든 요소 노드들을 탐색하여 반환한다.</b>
+    메서드 이름의 Elements가 복수형인 것에서 알 수 있듯 여러 개의 요소 노드 객체를 갖는 DOM 컬렉션 객체인 HTMLCollection 객체를 반환한다.
+    </pre>
+
+    <ul id="food">
+        <li>김치찌개</li>
+        <li>된장찌개</li>
+        <li>고등어구이</li>
+    </ul>
+    <ul id="drink">
+        <li>커피</li>
+        <li>콜라</li>
+        <li>우유</li>
+    </ul>
+
+    <script>
+        // DOM 전체에서 해당 태그명을 가진 요소를 모두 탐색하여 반환
+        const $lists = document.getElementsByTagName("li");
+        console.log($lists);
+        // HTMLCollection: 유사 배열 객체; 배열은 아니다.
+
+        let changeColor = 0;
+        for(let i = 0; i < $lists.length; i++) {
+            $lists[i].style.backgroundColor = "rgb(130, 220," + changeColor + ")";
+            changeColor += 50;
+        }
+
+        Array.from($lists).forEach(list => list.style.color = 'red');
+        // $lists를 배열로 변환 후 forEach로 스타일 적용
+
+        // 스프레드 문법
+        [...$lists].forEach(list => list.style.color = 'purple')
+        // $lists가 펼쳐져 있으면 forEach를 사용하여 스타일 적용
+
+        const $drink = document.getElementById('drink');
+        const $listFroDrink = $drink.getElementsByTagName('li');
+        console.log($listFroDrink);
+
+        Array.from($listFroDrink).forEach(list => list.style.color = 'blue');
+
+        const $noElem = $drink.getElementsByTagName('a');
+        // 인수로 준 태그의 요소가 존재하지 않으면, 빈 HTMLCollection 객체 반환
+        // ID: drink에는 a라는 태그가 없다.
+        console.log($noElem);
+    </script>
+</body>
+</html>

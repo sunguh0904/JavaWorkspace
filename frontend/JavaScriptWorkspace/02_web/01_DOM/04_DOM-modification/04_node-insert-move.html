@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_node insert move</title>
+</head>
+<body>
+    <h1>04. 노드 삽입, 이동</h1>
+
+    <h3>노드 삽입</h3>
+    <pre>
+    Node.prototype.appendChild(childNode) : 인수로 전달받은 노드를 appendChild 메서드를 호출한 노드의 마지막 자식 노드로 추가
+    Node.prototype.insertBefore(newNode, childNode) : 첫 번째 인수로 전달받은 노드를 두 번째 인수로 전달받은 노드 앞에 삽입
+                                                    두 번째 인수로 전달받은 노드는 반드시 insertBefore 메서드를 호출한 노드의 자식 노드여야 한다. 
+    </pre>
+
+    <ul id="drink">
+        <li>커피</li>
+    </ul>
+  
+    <script>
+        const $drink = document.getElementById('drink');
+
+        const $li = document.createElement('li');
+        $li.textContent = '콜라';
+        // 리스트를 만들고 값을 넣어준다.
+
+        $drink.appendChild($li);
+        // ul에 리스트 형식의 콜라 값을 넣어준다.
+
+        const $li2 = document.createElement('li');
+        $li2.textContent = '우유';
+
+        $drink.insertBefore($li2, $drink.lastElementChild);
+        // li2를 $drink.lastElementChild(콜라) 앞에 삽입
+        // 해당 요소의 자식 노드에만 삽입 가능
+
+        // $drink.insertBefore($li2, document.querySelector('pre'));
+        // pre 태그는 $drink의 자식 노드가 아니기 때문에 에러
+    </script>
+
+    <h3>노드 이동</h3>
+    
+    <pre>
+    DOM에 이미 존재하는 노드를 appendChild, insertBefore 메서드를 사용하여 DOM에 다시 추가하면
+    현재 위치에서 노드를 제거하고 새로운 위치에 노드를 추가하는 노드 이동이 발생한다.
+    </pre>
+
+    <ul id="food">
+        <li>파스타</li>
+        <li>피자</li>
+    </ul>
+    <script>
+        const $food = document.getElementById("food");
+
+        const $pasta = $food.firstElementChild;
+        const $pizza = $food.lastElementChild;
+        // 요소를 가지고 있는 노드만 반환
+
+        // const [$paste, $pizza] = $food.children;
+        // 위, 두 개의 코드를 하나로 축약한 코드
+
+        $drink.appendChild($pasta);
+        // $drink에 $pasta를 추가하겠다.
+
+        $drink.insertBefore($pizza, $pasta);
+        // pasta앞에 pizza를 삽입 하겠다.
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_parent node</title>
+</head>
+<body>
+    <h1>02. 부모 노드 탐색</h1>
+    <pre>
+    부모 노드를 탐색하려면 Node.prototype.parentNode 프로퍼티를 사용한다. 
+    텍스트 노드는 DOM 트리의 최종단 노드인 리프 노드(leaf node)이므로 부모가 텍스트 노드인 경우는 없다. 
+    </pre>
+
+    <script>
+        console.log(document.documentElement);
+        // HTML
+        console.log(document.head);
+        // HEAD
+        console.log(document.body);
+        // BODY
+        console.log(document.head.parentNode);
+        // HTML
+        console.log(document.body.parentNode);
+        // HTML; head와 body는 형제 관계
+    </script>
+
+    <ul id="lists">
+        <li class="coffee">커피</li>
+        <li class="coke">콜라</li>
+        <li class="milk">우유</li>
+    </ul>
+
+    <script>
+        const $coke = document.querySelector('.coke');
+        console.log($coke.parentNode);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_sibling node</title>
+</head>
+<body>
+    <h1>03. 형제 노드 탐색</h1>
+    <ol id="node">
+        <li>Node.prototype.previousSibling : 형제 노드 중 자신의 이전 형제 노드(요소 노드, 텍스트 노드)를 탐색하여 반환</li>
+        <li>Node.prototype.nextSibling : 형제 노드 중 자신의 다음 형제 노드(요소 노드, 텍스트 노드)를 탐색하여 반환</li>
+    </ol>
+   <script>
+    const $node = document.getElementById('node');
+
+    const firstChild = $node.firstChild;
+    // 개행문자도 포함
+    console.log(firstChild);
+
+    const newxtSibling = firstChild.nextSibling;
+    console.log(newxtSibling);
+
+    const previousSibling = nextSibling.previousSibling;
+   </script>
+
+    <ol id="element">
+        <li>Element.prototype.previousElementSibling : 형제 요소 노드 중 자신의 이전 형제 요소 노드를 탐색하여 반환</li>
+        <li>Element.prototype.nextElementSibling: 형제 요소 노드 중 자신의 다음 형제 요소 노드를 탐색하여 반환</li>
+    </ol>
+    <script>
+        const $element = document.getElementById("element");
+
+        const firstElementChild = $element.firstElementChild;
+        // li
+        console.log(firstElementChild);
+
+        const nextElementSibling = firstElementChild.nextElementSibling;
+        // li
+        console.log(nextElementSibling);
+
+        const previousElementSibling = nextElementSibling.previousElementSibling;
+        // li
+        console.log(previousElementSibling);
+    </script>
+    
+
+</body>
+</html>

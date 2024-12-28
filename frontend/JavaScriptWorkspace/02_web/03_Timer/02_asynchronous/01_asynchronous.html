@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_asynchronous</title>
+</head>
+<body>
+    <h1>01. 비동기</h1>
+
+    <pre>
+    <b>자바스크립트는 한 번에 하나의 태스크만 실행할 수 있는 싱글 스레드 방식으로 동작한다.</b>
+    때문에 처리에 시간이 걸리는 태스크를 실행하는 경우 블로킹(작업 중단)이 발생한다. 
+    </pre>
+
+    <h3>동기 처리(synchronous)</h3>
+    <pre>
+    현재 실행 중인 태스크가 종료할 때까지 다음에 실행 될 태스크가 대기하는 방식을 동기 처리라고 한다. 
+    장점 : 태스크를 순서대로 하나씩 처리하므로 실행 순서 보장
+    단점 : 앞선 태스크가 종료할 때까지 이후 태스크들이 블로킹 
+    </pre>
+
+    <script>
+        function sleep(func, delay) {
+            const delayUntil = Date.now() + delay;
+
+            while(Date.now() < delayUntil);
+
+            func();
+        };
+
+        function delay() {
+            console.log('실행 시간을 늦추고 싶어요.');
+        };
+
+        function start() {
+            console.log('바로 실행하고 싶어요.');
+        };
+
+        // sleep(delay, 3000);
+        // start();
+
+        // 첫 번째 함수가 끝나지 않으면 두 번째 함수는 실행되지 않는다.
+    </script>
+    
+
+    <h3>비동기 처리(asynchronous)</h3>
+    <pre>
+    현재 실행 중인 태스크가 종료되지 않은 상태라 해도, 다음 태스크를 곧 바로 실행하는 방식을 비동기 처리라고 한다. 
+    장점 : 태스크가 블로킹 되지 않음
+    단점 : 태스크의 실행 순서가 보장되지 않음
+
+    setTimeout, setInterval, 이벤트 핸들러, HTTP 요청 등은 비동기 처리 방식으로 동작한다.
+    </pre>
+
+    <script>
+        // 타이머 함수 setTimeout은 일정 시간이 경과한 이후에 콜백함수 delay를 호출한다.
+        // 타이머 함수 setTimeout은 start 함수를 블로킹하지 않는다.
+        setTimeout(delay, 3000);
+        start();
+    </script>
+   
+
+    <h3>태스크 큐(task queue)</h3>
+
+    <pre>
+    setTimeout이나 setInterval과 같은 비동기 함수의 콜백 함수 또는 이벤트 핸들러가 일시적으로 보관되는 영역이다. 
+    </pre>
+
+    <h3>이벤트 루프(event loop)</h3>
+    <pre>
+    이벤트 루프는 콜 스택에 현재 실행 중인 실행 컨텍스트가 있는지, 그리고 태스크 큐에 대기 중인 함수(콜백 함수, 이벤트 핸들러 등)
+    가 있는지 반복해서 확인한다. 만약 콜 스택이 비어있고 태스크 큐에 대기 중인 함수가 있다면 이벤트 루프는 순차적(FIFO)으로
+    태스크 큐에 대기 중인 함수를 콜 스택으로 이동 시킨다. 이때 콜 스택으로 이동한 함수는 실행된다. 
+    </pre>
+
+    <pre>
+    비동기 함수인 setTimeout의 콜백 함수는 태스크 큐에 푸시 되어 대기하다가
+    콜 스택이 비게 되면, 다시 말해 전역 코드 및 명시적으로 호출 된 함수가 모두 종료하면 비로소 콜 스택에 푸시되어 실행된다. 
+    </pre>
+
+    <pre>
+    <b>싱글 스레드 방식으로 동작하는 것은 브라우저가 아니라 브라우저에 내장 된 자바스크립트 엔진이라는 것에 주의한다.</b>
+    만약 모든 자바스크립트 코드가 자바스크립트 엔진에서 싱글 스레드 방식으로 동작한다면 자바스크립트는 비동기로 동작할 수 없다.
+    <b>자바스크립트 엔진은 싱글 스레드로 동작하지만 브라우저는 멀티 스레드로 동작한다.</b>
+    </pre>
+
+</body>
+
+</html>

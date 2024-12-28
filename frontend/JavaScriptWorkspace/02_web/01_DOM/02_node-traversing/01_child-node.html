@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_child node</title>
+</head>
+<body>
+    <h1>01. 자식 노드 탐색</h1>
+
+    <h3>노드 탐색</h3>
+    <pre>
+    요소 노드 취득 후 취득 요소 기점으로 DOM 트리의 노드를 옮겨 다니며 부모, 형제, 자식 노드 등을 탐색 해야할 때가 있다.
+    DOM 트리 상의 노드를 탐색할 수 있도록 Node, Element 인터페이스는 트리 탐색 프로퍼티를 제공한다.
+    </pre>
+
+    <h3>공백 텍스트 노드</h3>
+    <pre>
+    HTML 요소 사이의 스페이스, 탭, 줄바꿈(개행) 등의 공백 문자는 텍스트 노드를 생성한다. 
+    </pre>
+
+    <h3>자식 노드 탐색</h3>
+    <ol id="node">
+        <li>Node.prototype.childNodes : 자식 노드(요소 노드, 텍스트 노드)를 탐색하여 NodeList에 담아 반환</li>
+        <li>Node.prototype.firstChild : 첫 번째 자식 노드(요소 노드, 텍스트 노드) 반환</li>
+        <li>Node.prototype.lastChild : 마지막 자식 노드(요소 노드, 텍스트 노드) 반환</li>
+    </ol>
+    <script>
+        const $node = document.getElementById('node');
+        console.log($node.childNodes);
+        console.log($node.firstChild);
+        console.log($node.lastChild);
+    </script>
+    
+
+    <ol id="element">
+        <li>Element.prototype.children : 자식 노드 중 요소 노드만 탐색하여 HTMLCollection에 담아 반환</li>
+        <li>Element.prototype.firstElementChild : 첫 번째 자식 요소 노드 반환</li>
+        <li>Element.prototype.lastElementChild : 마지막 자식 요소 노드 반환</li>
+    </ol>
+
+    <script>
+        const $element = document.getElementById('element');
+        console.log($element.children);
+        console.log($element.firstElementChild);
+        console.log($element.lastElementChild);
+    </script>
+
+    <h3>자식 노드 존재 확인</h3>
+    <pre>
+    Node.prototype.hasChildNodes 메서드를 사용하여 자식 노드 존재 여부를 확인한다.
+    텍스트 노드를 포함하여 자식 노드의 존재를 확인한다.
+    </pre>
+    <ol id="empty">
+    </ol>
+    <script>
+        const $empty = document.getElementById('empty');
+        console.log($node.hasChildNodes());
+        console.log($element.hasChildNodes());
+        console.log($empty.hasChildNodes());
+
+        // 텍스트 노드를 제외한 요소노드의 존재를 확인하고 싶다면
+        // children.length 또는 childElementCount 등을 활용하여 확인할 수 있다.
+
+        console.log(!!$empty.children.length);
+        console.log(!!$empty.childElementCount);
+    </script>
+    
+
+</body>
+</html>

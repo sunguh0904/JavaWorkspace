@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_input event</title>
+    <style>
+        .lightgray { background: lightgray; }
+        .focused { outline : 3px dashed yellow; }
+    </style>
+</head>
+<body>
+    <h1>04. 사용자 입력 양식 이벤트</h1>
+
+    <form name="memberjoin">
+
+        <label for="username">이름</label>
+        <input type="text" name="username" id="username" value="홍길동">
+
+        <br><br>
+        
+        <label>성별</label>
+        <input type="radio" name="gender" id="male" value="m" checked><label for="male">남자</label>
+        <input type="radio" name="gender" id="female" value="f"><label for="female">여자</label>
+        
+        <br><br>
+
+        <label>나이</label>
+        <select id="age" name="age">
+            <option value="10">10대 이하</option>
+            <option value="20">20대</option>
+            <option value="30">30대</option>
+            <option value="40">40대</option>
+            <option value="50">50대</option>
+            <option value="60">60대 이상</option>
+        </select>
+
+        <br><br>
+
+        <label>자기소개</label>
+        <textarea name="introduce" id="introduce" rows="5" cols="30"
+        style="resize:none;">저를 소개합니다!</textarea>
+        <span>0</span>/5000자
+
+        <br><br>
+
+        <input type="submit" value="제출">
+    </form>
+
+    <h3>폼 요소 값 다루기</h3>
+    <pre>
+    input, textarea : input.value 또는 input.checked(checkbox 또는 radio)
+    select.options : option 하위 요소들을 담고 있는 컬렉션
+    select.value : 현재 선택된 option 값
+    select.selectedIndex : 현재 선택된 option의 번호(인덱스)
+    </pre>
+
+   <script>
+    // form 취득 = forms를 사용, 문서 내의 모든 form을 HTMLCollection 타입으로 반환
+    console.log(document.forms);
+
+    // form 중에 이름이 memberjoin을 취득
+    console.log(document.forms.memberjoin);
+
+    // form 중에 0 번째 인덱스 값을 취득
+    console.log(document.forms[0]);
+
+    const $form = document.forms.memberjoin;
+
+    // 요소 취득, form 내 사용자 입력 양식을 HTMLFormControlleCollection 타입으로 반환
+    console.log($form.elements);
+    console.log($form.elements.username);
+
+    const $username = $form.username;
+    console.log(`$form.username.value : ${$username.value}`);
+    $username.value = '판다';
+
+    const $gender = $form.gender;
+
+    // 첫 번째 인덱스에 체크가 되있는지 확인, false
+    console.log(`$form.gender[1].checked : ${$gender[1].checked}`); // false
+    $gender[1].checked = true;
+    console.log(`$form.gender[1].checked : ${$gender[1].checked}`); // true
+
+    const $age = $form.age;
+
+    // 옵션이 어떤 것이 있는지 반환해서 보여줌
+    console.log($age.options);
+
+    // 기본 select를 인덱스 2번째로 변경해 준다. 10대 이하 -> 30대로 변경
+    $age.options[2].selected = true;
+
+    // 기본 select를 50대로 변경, 변수가 아닌 속성값을 바꿀 경우 모든 age 속성 값이 바뀔 수 있다.
+    age.value = '50'
+
+    const $introduce = $form.introduce;
+    console.log($introduce.value);
+    $introduce.value = 'value';
+   </script>
+
+    <h3>focus, blur 이벤트</h3>
+    <pre>
+    focus : 사용자가 폼 요소를 클릭하거나 tab 키를 눌러 요소로 이동 했을 때 발생하는 이벤트이다.
+    blur : 사용자가 다른 곳을 클릭하거나 tab 키를 눌러 다음 폼 필드로 이동했을 때 발생하는 이벤트이다. 
+    또한 focus, blur 메소드로 요소에 포커스를 주거나 제거할 수 있다.
+    </pre>
+
+   <script>
+    // $username.onfocus = (e) => {
+    //     e.target.classList.toggle('lightgray');
+    // };
+
+    $username.onblur = (e) => {
+        e.target.classList.toggle('lightgray');
+    };
+   </script>
++
+
+    <h3>focusin, focusout 이벤트</h3>
+    <pre>
+    focus 이벤트는 해당 입력 필드에서만 동작하고 버블링되지 않는다. 
+    버블링이 필요하다면 focusin, focusout 이벤트를 사용한다. 
+    </pre>
+
+    <script>
+        // focused: 상단에 스타일 설정된 요소
+        // 버블링: 하위에서 상위 요소로 전파되는 이벤트
+        $form.addEventListener('focusin', (e) => e.target.classList.add('focused'));
+        $form.addEventListener('focusout', (e) => e.target.classList.remove('focused'));
+    </script>
+
+    <h3>change 이벤트</h3>
+    <pre>
+    change 이벤트는 요소 변경이 끝나면 발생하는 이벤트이다.
+    select/checkbox/radio의 경우 선택 값이 변경된 직후 이벤트가 발생하지만
+    텍스트 입력 요소인 경우 변경 후 포커스를 잃었을 때 이벤트가 발생한다.
+    </pre>
+
+    <script>
+        // 버블링 효과 적용 받음
+        $age.addEventListener('change', () => alert('age change'));
+
+        // 값의 변동이 있고, 이후 포커 밖으로 나가면 이벤트 발생
+        $introduce.addEventListener('change', () => alert('introduce change'));
+    </script>
+
+    <h3>input 이벤트</h3>
+    <pre>
+    input 이벤트는 키보드 이벤트와 달리 어떤 방법으로든 값을 변경할 때 발생한다.
+    예를 들어 마우스를 사용하여 글자를 붙여 넣거나 음성 인식 기능을 사용해서 글자를 입력할 때도 반응한다.
+    </pre>
+
+    <script>
+
+        // 글자 입력수 출력
+        $introduce.addEventListener('input', (e) => {
+            // trim = 양쪽 공백을 제거
+            let len = e.target.value.trim().length;
+            $form.querySelector('span').textContent = len;
+        });
+    </script>
+   
+</body>
+</html>

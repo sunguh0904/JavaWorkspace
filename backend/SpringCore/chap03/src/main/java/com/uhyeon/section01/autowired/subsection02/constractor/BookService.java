@@ -1,4 +1,4 @@
-package com.uhyeon.section01.autowired.subsection02;
+package com.uhyeon.section01.autowired.subsection02.constractor;
 
 import com.uhyeon.section01.common.BookDAO;
 import com.uhyeon.section01.common.BookDTO;

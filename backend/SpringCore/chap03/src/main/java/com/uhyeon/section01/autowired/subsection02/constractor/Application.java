@@ -1,4 +1,4 @@
-package com.uhyeon.section01.autowired.subsection02;
+package com.uhyeon.section01.autowired.subsection02.constractor;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

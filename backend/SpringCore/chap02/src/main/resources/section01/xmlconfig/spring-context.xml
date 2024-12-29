@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="account" class="com.uhyeon.common.PersonalAccount">
+        <constructor-arg index="0" value="20" />
+        <constructor-arg index="1" value="110-234-567890" />
+    </bean>
+
+    <!--의존성 주입 방법-->
+    <!--1. 생성자 주입-->
+<!--
+    <bean id="member" class="com.uhyeon.common.MemberDTO">
+        <constructor-arg name="sequence" value="1" />
+        <constructor-arg name="name" value="판다" />
+        <constructor-arg name="email" value="panda@gmail.com" />
+        <constructor-arg name="personalAccount">
+            <ref bean="account" />
+        </constructor-arg>
+    </bean>
+-->
+
+    <!--2. Setter 주입-->
+    <bean id="member" class="com.uhyeon.common.MemberDTO">
+        <property name="sequence" value="1" />
+        <property name="name" value="판다" />
+        <property name="email" value="panda@gmail.com" />
+        <property name="personalAccount" ref="account" />
+    </bean>
+</beans>

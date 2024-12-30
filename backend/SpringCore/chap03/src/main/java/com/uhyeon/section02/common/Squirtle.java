@@ -1,5 +1,8 @@
 package com.uhyeon.section02.common;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Squirtle implements Pokemon {
     @Override
     public void attack() {

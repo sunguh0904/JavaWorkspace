@@ -1,4 +1,4 @@
-package com.uhyeon.common.section02.initdestory.subsection02.annotation;
+package com.uhyeon.section02.initdestory.subsection02.annotation;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

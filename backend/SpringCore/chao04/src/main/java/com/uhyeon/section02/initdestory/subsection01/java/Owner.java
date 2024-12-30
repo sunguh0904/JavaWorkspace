@@ -1,4 +1,4 @@
-package com.uhyeon.common.section02.initdestory.subsection01.java;
+package com.uhyeon.section02.initdestory.subsection01.java;
 
 public class Owner {
     public void openShop() {
